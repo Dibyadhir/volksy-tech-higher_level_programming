@@ -4,5 +4,5 @@ if __name__ == "__main__":
     lst = argv[1:]
     sum = 0
     for i in lst:
-        sum = sum + i
+        sum = sum + int(i)
     print(sum)
