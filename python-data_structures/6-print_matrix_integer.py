@@ -2,9 +2,9 @@
 def print_matrix_integer(matrix):
     for i in range(len(matrix)):
         if matrix[i] == 0:
-            print()
+            print("{}".format(""))
         for j in matrix[i]:
             if j == matrix[i][-1]:
-                print(j)
+                print("{}".format(j))
             else:
-                print(j, end=" ")
+                print("{}".format(j), end=" ")
