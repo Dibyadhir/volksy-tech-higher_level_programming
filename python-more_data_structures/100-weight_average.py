@@ -9,5 +9,5 @@ def weight_average(my_list):
             a, b = my_list[i]
             mul = a * b
             add = add + b
-            mul_add =  mul_add + mul
+            mul_add = mul_add + mul
         return mul_add / add
