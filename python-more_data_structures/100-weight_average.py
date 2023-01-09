@@ -6,7 +6,7 @@ def weight_average(my_list):
         mul_add = 0
         add = 0
         for i in range(len(my_list)):
-            a,b = my_list[i]
+            a, b = my_list[i]
             mul = a * b
             add = add + b
             mul_add =  mul_add + mul
