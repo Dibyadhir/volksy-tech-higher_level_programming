@@ -3,18 +3,19 @@
 
 
 class Square:
-    '''This is Square'''
-
+    """This is Square"""
     def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
 
     @property
     def size(self):
+        """size"""
         return self.__size
 
     @size.setter
     def size(self, value):
+        """size value"""
         if type(value) != int:
             raise TypeError('size must be an integer')
         elif value < 0:
@@ -24,17 +25,21 @@ class Square:
 
     @property
     def position(self):
+        """position"""
         return self.__position
 
     @position.setter
     def position(self, value):
+        pass
+        """
         try:
             if type(value) != tuple and  type(value[0]) != int and type(value[1]) != int:
                 raise TypeError('position must be a tuple of 2 positive integers')
         else:
             self.__position = value
-
+        """
     def area(self):
+        """Hiii"""
         return self.__size ** 2
 
     def my_print(self):
