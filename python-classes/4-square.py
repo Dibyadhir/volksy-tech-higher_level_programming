@@ -4,13 +4,13 @@
 
 class Square:
     """ this is square. """
-
-
     def __init__(self, size=0):
         self.size = size
+
     @property
     def size(self):
         return self.__size
+
     @size.setter
     def size(self, value):
         if type(value) != int:
