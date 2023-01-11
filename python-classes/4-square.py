@@ -2,8 +2,10 @@
 """ This is classes and object. """
 
 
-lass Square:
-    """ this is square """
+class Square:
+    """ this is square. """
+
+
     def __init__(self, size=0):
         self.size = size
     @property
