@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-""" This is classes and object. """
+'''This is classes and object.'''
 
 
 class Square:
-    """ This is Square """
+    '''This is Square'''
+
     def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
