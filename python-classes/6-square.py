@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This is class and object. """
+""" This is classes and object. """
 
 
 class Square:
