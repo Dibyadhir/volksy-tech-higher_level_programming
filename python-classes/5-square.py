@@ -4,8 +4,6 @@
 
 class Square:
     """ this is square. """
-
-
     def __init__(self, size=0):
         self.size = size
 
@@ -30,4 +28,4 @@ class Square:
             print()
         else:
             for i in range(self.__size):
-                print("#" * self.__size, file=sys.stdout)
+                print("#" * self.__size,)
