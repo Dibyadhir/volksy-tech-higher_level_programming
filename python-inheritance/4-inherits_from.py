@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-""" This is module docuentation """
+""" here module is documented """
 
 
 def inherits_from(obj, a_class):
-    """ This is module documentation """
+    """ method is documented """
     if issubclass(type(obj), a_class) and type(obj) != a_class:
         return True
-    else:
-        return False
+    return False
