@@ -2,7 +2,7 @@
 """ this is module documentation """
 
 
-class MyList:
+class MyList(list):
     """ this is class documentation """
 
     def print_sorted(self):
