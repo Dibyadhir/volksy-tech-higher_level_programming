@@ -16,6 +16,7 @@ class Rectangle(BaseGeometry):
     def area(self):
         """ this is public method """
         return self.__height * self.__width
+
     def __str__(self):
         """ this is str constructure """
         return ("[Rectangle] {}/{}".format(self.__width, self.__height))
