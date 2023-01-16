@@ -5,15 +5,18 @@
 class Rectangle:
     """ this is documented """
     def __init__(self, width=0, height=0):
+        """ this is constructore """
         self.width = width
         self.height = height
 
     @property
     def width(self):
+        """ this is property """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """ this is setter """
         if value != int:
             raise TypeError("width must be an integer")
         elif value < 0:
@@ -26,7 +29,7 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    def height(self,value):
+    def height(self, value):
         if value != int:
             return TypeError("height must be an integer")
         elif value < 0:
