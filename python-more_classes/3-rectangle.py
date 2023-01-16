@@ -2,7 +2,10 @@
 """ this is documented """
 
 
-def __init__(self, width=0, height=0):
+class Rectangle:
+    """ this is class """
+
+    def __init__(self, width=0, height=0):
         """Initialize a new Rectangle."""
         self.width = width
         self.height = height
