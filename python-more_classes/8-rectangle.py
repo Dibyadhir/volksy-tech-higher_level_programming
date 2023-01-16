@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" this is commited """
+""" this module documented """
 
 
 class Rectangle:
