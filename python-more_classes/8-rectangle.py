@@ -1,4 +1,4 @@
-#!/u sr/bin/python3
+#!/usr/bin/python3
 """ this is commited """
 
 
