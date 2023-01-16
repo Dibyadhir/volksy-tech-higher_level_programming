@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ this is documented """
 
+
 def __init__(self, width=0, height=0):
         """Initialize a new Rectangle."""
         self.width = width
