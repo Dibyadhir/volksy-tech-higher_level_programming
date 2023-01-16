@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-""" this module documented """
+""" this is documented """
 
 
 class Rectangle:
-    """ this is class documented """
+    """Represent a rectangle class."""
 
     number_of_instances = 0
     print_symbol = "#"
@@ -76,7 +76,7 @@ class Rectangle:
     def __repr__(self):
         """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
-        rect += ", " + str(self.__height) + "")
+        rect += ", " + str(self.__height) + ")"
         return (rect)
 
     def __del__(self):
