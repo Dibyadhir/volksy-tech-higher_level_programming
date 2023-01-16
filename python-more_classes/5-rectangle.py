@@ -2,6 +2,9 @@
 """ this is documented """
 
 
+class Rectangle:
+    """ this is class """
+
     def __init__(self, width=0, height=0):
         """this is constructore"""
         self.width = width
