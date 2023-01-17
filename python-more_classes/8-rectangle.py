@@ -1,86 +1,83 @@
-#!/usr/bin/python3
+[23:52, 1/16/2023] Geetanjali behera Nth: #!/usr/bin/python3
 """
-Rectangle Class
+This is the "Rectangle"  module.
+This module provides a Rectangle class.
 """
 
 
 class Rectangle:
-    """Class of Rectangle"""
+    """A Rectangle class with attributes width and height,
+    methods area, perimeter, print, str, repr, and del, and
+    class attribute number_of_instances that keeps track of # of instances,
+    class attribute print_symbol which is used as symbol for printing,
+    and static method bigger_or_equal that returns biggest rectangle.
+    """
 
     number_of_instances = 0
     print_symbol = "#"
 
-    """class defined"""
     def _init_(self, width=0, height=0):
-        """Initialization method"""
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
 
     @property
     def width(self):
-        """Setter Method of width"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Getter Method of width"""
-        if isinstance(value, int) is False:
-            raise TypeError('width must be an integer')
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
         if value < 0:
-            raise TypeError('width must be >= 0')
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
     def height(self):
-        """Setter Method of height"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Getter Method of height"""
-        if isinstance(value, int) is False:
-            raise TypeError('height must be an integer')
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
         if value < 0:
-            raise TypeError('height must be >= 0')
+            raise ValueError("height must be >= 0")
         self.__height = value
-
-    def area(self):
-        """method to return area of width and height"""
-        return self._width * self._height
-
-    def perimeter(self):
-        """method to return perimeter of width and height"""
-        if self._width == 0 or self._height == 0:
-            return 0
-        return (self._width + self._height) * 2
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """returns the biggest rectangle area"""
-        if isinstance(rect_1, Rectangle) is False:
-            raise TypeError('rect_1 must be an instance of Rectangle')
-        if isinstance(rect_2, Rectangle) is False:
-            raise TypeError('rect_2 must be an instance of Rectangle')
-        if rect_1.area() > rect_2.area():
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
             return rect_1
-        if rect_1.area() < rect_2.area():
+        else:
             return rect_2
-        return rect_1
+[23:57, 1/16/2023] Geetanjali behera Nth: def _repr_(self):
+        return "Rectangle({:d}, {:d})".format(self._width, self._height)
 
     def _str_(self):
-        """method string object"""
-        if self._width == 0 or self._height == 0:
-            return ""
-        for row in range(self.__height - 1):
-            print(str(self.print_symbol) * self.__width)
-        return str(str(self.print_symbol) * self.__width)
-
-    def _repr_(self):
-        """repr method"""
-        return ("Rectangle({}, {})".format(self._width, self._height))
-
+        total = ""
+        for i in range(self.__height):
+            for j in range(self.__width):
+                try:
+                    total += str(self.print_symbol)
+                except Exception:
+OBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOB                    total += type(self).print_symbol
+OBOB            if i is not self.__height - 1:
+OBOBOB                total += "\n"
+        return total
+OBOBOB
     def _del_(self):
-        """delete object/instance"""
-        print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+OB        print("Bye rectangle...")
+OBOBOB        Rectangle.number_of_instances -= 1
+OBOB
+    def area(self):
+OBOB        return self._width * self._height
+[6~OBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOBOB
+OBOBOBOB    def perimeter(self):
+        if self._width is 0 or self._height is 0:
+OB            return 0
+OBOBOBOB        return (4 * self._width) + (2 * self._height)
