@@ -4,7 +4,6 @@
 
 class Rectangle:
     """ this is documented """
-    
     number_of_instances = 0
     print_symbol = "#"
 
@@ -76,7 +75,7 @@ class Rectangle:
     def __repr__(self):
         """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
-        rect += ", " + str(self.__height) + ")"
+        rect += ", " + str(self.__height) + "")
         return (rect)
 
     def __del__(self):
