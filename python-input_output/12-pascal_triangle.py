@@ -6,7 +6,6 @@ def pascal_triangle(n):
     """this is pascal_triangle method"""
     if n <= 0:
         return []
-    
     triangles = [[1]]
     while len(triangles) != n:
         tri = triangles[-1]
