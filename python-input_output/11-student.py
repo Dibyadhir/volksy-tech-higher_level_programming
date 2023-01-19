@@ -14,9 +14,14 @@ class Student:
         
     def to_json(self, attrs=None):
         """this is json"""
-        for i in attrs:
-            if type(attrs) == list and type(i) == str:
-                return self.__dict__
+        if attrs is None:
+            return self.__dict__
+        else:
+            x = dict()
+            for i in attrs:
+                if i in self.__dict__:
+                    x[i] = self.__dict__.get(i)
+            return x
         
     def reload_from_json(self, json):
         """this is reload_from_json"""
