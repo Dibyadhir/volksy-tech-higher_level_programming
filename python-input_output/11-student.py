@@ -20,6 +20,5 @@ class Student:
         
     def reload_from_json(self, json):
         """this is reload_from_json"""
-        for i in json.items():
-            for j in i:
-                setattr(self, i, j)
+        for i, j in json.items():
+            setattr(self, i, j)
