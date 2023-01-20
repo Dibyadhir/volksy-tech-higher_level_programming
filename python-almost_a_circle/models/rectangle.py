@@ -93,3 +93,21 @@ class Rectangle(Base):
         """it overriding the __str__ method"""
         return ("[Rectangle] ({}) {}/{} - {}/{}".format
                 (self.id, self.x, self.y, self.width, self.height))
+
+    def update(self, *args, **kwargs):
+        """this is args"""
+        dct = {}
+        if args is not None and len(args) > 0:
+            keys = ['id', 'width', 'height', 'x', 'y']
+            for i in range(len(args):
+                if len(args) <= 5 else 5):
+                dct[keys[i]] = args[i]
+        else:
+            dct = kwargs
+
+        if len(dct) > 0:
+            for key, value in dct.items():
+                if key == 'id' and value is None:
+                    self.__init__(self.width, self.height, self.x, self.y)
+                else:
+                    setattr(self, key, value)
