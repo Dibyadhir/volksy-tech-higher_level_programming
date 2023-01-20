@@ -94,6 +94,12 @@ class Rectangle(Base):
         return ("[Rectangle] ({}) {}/{} - {}/{}".format
                 (self.id, self.x, self.y, self.width, self.height))
 
+    def display(self):
+        """Rectangle instance with the character #."""
+        print('\n' * self.y, end='')
+        for height in range(self.height):
+            print(' ' * self.x + '#' * self.width)
+
     def update(self, *args, **kwargs):
         """this is args"""
         dct = {}
