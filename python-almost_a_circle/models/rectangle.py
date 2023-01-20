@@ -1,28 +1,46 @@
 #!/usr/bin/python3
 """module is documented"""
-from models.base import Base
+
+
+class Base:
+    """this is my class"""
+
+    __nb_objects = 0
+
+    def __init__(self, id=None):
+        """this is constructore"""
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
 
 class Rectangle(Base):
-    """this is rectangle class """
+    """ this is rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
-        self.height = hight
+        self.height = height
         self.x = x
-        self.y = y 
+        self.y = y
+        super().__init__(id)
+
     @property
     def width(self):
         """width"""
         return self.__width
+
     @property
     def height(self):
         """height"""
         return self.__height
+
     @property
     def x(self):
         """x"""
         return self.__x
+
     @property
     def y(self):
         """y"""
@@ -32,17 +50,17 @@ class Rectangle(Base):
     def width(self, value):
         """width"""
         self.__width = value
-    @height.setter
 
+    @height.setter
     def height(self, value):
         """height"""
         self.__height = value
-    
+
     @x.setter
     def x(self, value):
         """x"""
         self.__x = value
-    
+
     @y.setter
     def y(self, value):
         """y"""
