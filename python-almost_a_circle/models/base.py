@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """here module is documented"""
 
+
 class Base:
     """this is my class"""
 
@@ -10,5 +11,5 @@ class Base:
         if id is not None:
             self.id = id
         else:
-            Base.__nb_objects =  __nb_objects + 1
-            self.id =  Base.__nb_objects
+            Base.__nb_objects = __nb_objects + 1
+            self.id = Base.__nb_objects
