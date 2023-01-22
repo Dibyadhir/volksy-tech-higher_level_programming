@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 """this is module"""
 from rectangle import Rectangle
 
