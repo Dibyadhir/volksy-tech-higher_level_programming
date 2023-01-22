@@ -118,7 +118,6 @@ class Rectangle(Base):
                     setattr(self, key, value)
     def update(self, *args, **kwargs):
         """Update the Rectangle."""
-
         if args and len(args) != 0:
             a = 0
             for arg in args:
