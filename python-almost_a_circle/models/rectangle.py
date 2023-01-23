@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""module is documented"""
-from models.base import Base
+"""this is module document"""
 
 
 class Rectangle(Base):
-    """ this is rectangle"""
+    """this is rectangle """
 
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
@@ -58,8 +57,8 @@ class Rectangle(Base):
         """x"""
         if type(value) != int:
             raise TypeError("x must be an integer")
-        elif value < 0:
-            raise ValueError("x must be >= 0")
+        elif value <= 0:
+            raise ValueError("x must be > 0")
         else:
             self.__x = value
 
@@ -68,13 +67,13 @@ class Rectangle(Base):
         """y"""
         if type(value) != int:
             raise TypeError("y must be an integer")
-        elif value < 0:
-            raise ValueError("y must be >= 0")
+        elif value <= 0:
+            raise ValueError("y must be > 0")
         else:
             self.__y = value
 
     def area(self):
-        """return area of rectangle"""
+        """its return area of the rectangle"""
         return self.width * self.height
 
     def display(self):
@@ -86,13 +85,8 @@ class Rectangle(Base):
             print("")
         for i in range(self.height):
             [print(" ", end="") for j in range(self.x)]
-            [print("#", end="") for k in range(self.width)]
+            [print("#",end="") for k in range(self.width)]
             print("")
-
-    def __str__(self):
-        """it overriding the __str__ method"""
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format
-                (self.id, self.x, self.y, self.width, self.height))
 
     def display(self):
         """Rectangle instance with the character #."""
@@ -105,11 +99,11 @@ class Rectangle(Base):
         dct = {}
         if args is not None and len(args) > 0:
             keys = ['id', 'width', 'height', 'x', 'y']
-            for i in range(len(args) if len(args) <= 5 else 5):
+            for i in range(len(args):
+                if len(args) <= 5 else 5):
                 dct[keys[i]] = args[i]
         else:
             dct = kwargs
-
         if len(dct) > 0:
             for key, value in dct.items():
                 if key == 'id' and value is None:
@@ -117,38 +111,17 @@ class Rectangle(Base):
                 else:
                     setattr(self, key, value)
 
-    def update(self, *args, **kwargs):
-        """Update the Rectangle."""
-        if args and len(args) != 0:
-            a = 0
-            for arg in args:
-                if a == 0:
-                    if arg is None:
-                        self.__init__(self.width, self.height, self.x, self.y)
-                    else:
-                        self.id = arg
-                elif a == 1:
-                    self.width = arg
-                elif a == 2:
-                    self.height = arg
-                elif a == 3:
-                    self.x = arg
-                elif a == 4:
-                    self.y = arg
-                a += 1
+    def to_dictionary(self):
+        """Return the dictionary representation of a Rectangle."""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
 
-        elif kwargs and len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "id":
-                    if v is None:
-                        self.__init__(self.width, self.height, self.x, self.y)
-                    else:
-                        self.id = v
-                elif k == "width":
-                    self.width = v
-                elif k == "height":
-                    self.height = v
-                elif k == "x":
-                    self.x = v
-                elif k == "y":
-                    self.y = v
+    def __str__(self):
+            """it overriding the __str__ method"""
+            return "[Rectangle]{} {}/{} - {}/{}".format
+        (self.id,self.x, self.y, self.width, self.height)
