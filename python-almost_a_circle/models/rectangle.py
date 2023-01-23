@@ -101,7 +101,7 @@ class Rectangle(Base):
             keys = ['id', 'width', 'height', 'x', 'y']
             for i in range(len(args)):
                 if len(args) <= 5 else 5:
-                dct[keys[i]] = args[i]
+                    dct[keys[i]] = args[i]
         else:
             dct = kwargs
         if len(dct) > 0:
