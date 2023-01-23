@@ -56,7 +56,7 @@ class Base:
         except IOError:
             return []
 
-        @classmethod
+    @classmethod
     def save_to_file_csv(cls, list_objs):
         """this is csv file"""
         filename = cls.__name__ + ".csv"
