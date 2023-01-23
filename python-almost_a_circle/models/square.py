@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """ rectangle module contains class Rectangle """
-
-
 from models.rectangle import Rectangle
 
 
