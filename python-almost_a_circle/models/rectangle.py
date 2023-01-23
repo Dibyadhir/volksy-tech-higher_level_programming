@@ -96,20 +96,23 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """this is args"""
-        dct = {}
-        if args is not None and len(args) > 0:
-            keys = ['id', 'width', 'height', 'x', 'y']
-            for i in range(len(args)):
-                if len(args) <= 5 else 5:
-                    dct[keys[i]] = args[i]
-        else:
-            dct = kwargs
-        if len(dct) > 0:
-            for key, value in dct.items():
-                if key == 'id' and value is None:
-                    self.__init__(self.width, self.height, self.x, self.y)
-                else:
-                    setattr(self, key, value)
+        if args and len(args) != 0:
+            a = 0
+            for arg in args:
+                if a == 0:
+                    if arg is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif a == 1:
+                    self.width = arg
+                elif a == 2:
+                    self.height = arg
+                elif a == 3:
+                    self.x = arg
+                elif a == 4:
+                    self.y = arg
+                a += 1
 
     def to_dictionary(self):
         """Return the dictionary representation of a Rectangle."""
