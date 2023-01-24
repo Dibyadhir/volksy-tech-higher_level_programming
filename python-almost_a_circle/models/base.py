@@ -89,7 +89,7 @@ class Base:
         except IOError:
             return []
 
-        @staticmethod
+    @staticmethod
     def draw(list_rectangles, list_squares):
         urt = turtle.Turtle()
         turt.screen.bgcolor("#b7312c")
@@ -122,4 +122,4 @@ class Base:
                 turt.left(90)
             turt.hideturtle()
 
-        turtle.exitonclick()
+        turtle.xitonclick()
