@@ -1,136 +1,111 @@
 #!/usr/bin/python3
-"""here module is documented"""
+"""This module creates the Base class"""
+
+
 import json
 import csv
-import turtle
+from os import path
 
 
 class Base:
-    """Represent the base model"""
+    """A class named Base
 
+    Attributes:
+    attr1(__nb_objects): number of objects
+    attr2(id): object id
+    """
     __nb_objects = 0
 
+    def reset_objects():
+        """Resets number of objects for testing"""
+        Base.__nb_objects = 0
+
     def __init__(self, id=None):
-        """Initialize a new Base"""
+        """Initiliazes an instance"""
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
-            self.id = Base.__nb_objects
-
-    @staticmethod
-    def to_json_string(list_dictionaries):
-        """Return the JSON serialization of a list of dicts"""
-        if list_dictionaries is None or list_dictionaries == []:
-            return "[]"
-        return json.dumps(list_dictionaries)
+            self.id = self.__nb_objects
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write the JSON serialization of a list of objects to a file"""
-        filename = cls.__name__ + ".json"
-        with open(filename, "w") as jsonfile:
-            if list_objs is None:
-                jsonfile.write("[]")
-            else:
-                list_dicts = [o.to_dictionary() for o in list_objs]
-                jsonfile.write(Base.to_json_string(list_dicts))
+        """writes the JSON string representation of list_objs to a file"""
+        list_dictionaries = []
+        if list_objs is None:
+            with open(cls.__name__ + ".json", "w",  encoding='utf-8') as file:
+                file.write(Base.to_json_string(list_dictionaries))
+            return
+        for model in list_objs:
+            list_dictionaries.append(model.to_dictionary())
+        with open(cls.__name__ + ".json", "w",  encoding='utf-8') as file:
+            file.write(Base.to_json_string(list_dictionaries))
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the CSV string representation of list_objs to a file"""
+        with open(cls.__name__ + ".csv", "w", newline='') as f:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ['id', 'width', 'height', 'x', 'y']
+            elif cls.__name__ == "Square":
+                fieldnames = ['id', 'size', 'x', 'y']
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            if list_objs is not None:
+                for model in list_objs:
+                    writer.writerow(model.to_dictionary())
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """converts list of dictionaries to json string"""
+        if list_dictionaries is None or len(list_dictionaries) is 0:
+            return "[]"
+        return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
-        """Return the deserialization of a JSON string"""
-        if json_string is None or json_string == "[]":
+        """converts json string to object"""
+        if json_string is None:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
-        """Return a class instantied from a dictionary of attributes"""
-        if dictionary and dictionary != {}:
-            if cls.__name__ == "Rectangle":
-                new = cls(1, 1)
-            else:
-                new = cls(1)
-            new.update(**dictionary)
-            return new
+        """creates an instance based on a dictionary"""
+        if cls.__name__ == "Rectangle":
+            object = cls(1, 1)
+            object.update(**dictionary)
+            return object
+
+        if cls.__name__ == "Square":
+            object = cls(1)
+            object.update(**dictionary)
+            return object
 
     @classmethod
     def load_from_file(cls):
-        """Return a list of classes instantiated from a file of JSON strings"""
-        filename = str(cls.__name__) + ".json"
-        try:
-            with open(filename, "r") as jsonfile:
-                list_dicts = Base.from_json_string(jsonfile.read())
-                return [cls.create(**d) for d in list_dicts]
-        except IOError:
+        """loads a list of instances from a json file"""
+        if path.exists(cls.__name__ + ".json") is False:
             return []
-
-    @classmethod
-    def save_to_file_csv(cls, list_objs):
-        """Write the CSV serialization of a list of objects to a file"""
-
-        filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as csvfile:
-            if list_objs is None or list_objs == []:
-                csvfile.write("[]")
-            else:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+        with open(cls.__name__ + ".json", "r",  encoding='utf-8') as file:
+            listofinstances = []
+            objectlist = cls.from_json_string(file.read())
+            for dict in objectlist:
+                objectdict = {}
+                for key, value in dict.items():
+                    objectdict[key] = value
+                listofinstances.append(cls.create(**objectdict))
+            return listofinstances
 
     @classmethod
     def load_from_file_csv(cls):
-        """Return a list of classes instantiated from a CSV file"""
-        filename = cls.__name__ + ".csv"
-        try:
-            with open(filename, "r", newline="") as csvfile:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
-                return [cls.create(**d) for d in list_dicts]
-        except IOError:
+        if path.exists(cls.__name__ + ".csv") is False:
             return []
-
-    @staticmethod
-    def draw(list_rectangles, list_squares):
-        """Draw Rectangles and Squares using the turtle module"""
-        turt = turtle.Turtle()
-        turt.screen.bgcolor("#b7312c")
-        turt.pensize(3)
-        turt.shape("turtle")
-
-        turt.color("#ffffff")
-        for rect in list_rectangles:
-            turt.showturtle()
-            turt.up()
-            turt.goto(rect.x, rect.y)
-            turt.down()
-            for i in range(2):
-                turt.forward(rect.width)
-                turt.left(90)
-                turt.forward(rect.height)
-                turt.left(90)
-            turt.hideturtle()
-
-        turt.color("#b5e3d8")
-        for sq in list_squares:
-            turt.showturtle()
-            turt.up()
-            turt.goto(sq.x, sq.y)
-            turt.down()
-            for i in range(2):
-                turt.forward(sq.width)
-                turt.left(90)
-                turt.forward(sq.height)
-                turt.left(90)
-            turt.hideturtle()
-
-        turtle.exitonclick()
+        with open(cls.__name__ + ".csv", "r", newline='') as f:
+            listofinstances = []
+            reader = csv.DictReader(f)
+            for row in reader:
+                for key, value in row.items():
+                    row[key] = int(value)
+                listofinstances.append(cls.create(**row))
+        return listofinstances
