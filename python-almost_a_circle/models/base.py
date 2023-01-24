@@ -72,12 +72,12 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """creates an instance based on a dictionary"""
-            if cls.__name__ == "Rectangle":
-                new = cls(1, 1)
-            else:
-                new = cls(1)
-            new.update(**dictionary)
-            return new
+        if cls.__name__ == "Rectangle":
+            new = cls(1, 1)
+        else:
+            new = cls(1)
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
