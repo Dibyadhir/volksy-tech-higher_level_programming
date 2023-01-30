@@ -1,2 +1,2 @@
---this is first sql
+-- Lists all databases of the MySQL server.
 SHOW DATABASES;`
