@@ -1,4 +1,4 @@
---task18
+-- task18
 SELECT city, AVG(value) AS avg_temp
 FROM temperatures
 GROUP BY city
