@@ -9,7 +9,7 @@ if __name__ == '__main__':
     cor = con.cursor()
     x = sys.argv[4]
     a = 'select * from states where name = {} order by id'.format(x)
-    cur.execute(a)
-    y = cur.fetchall()
+    cor.execute(a)
+    y = cor.fetchall()
     for i in y:
         print(i)
