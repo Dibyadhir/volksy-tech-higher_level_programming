@@ -11,5 +11,5 @@ if __name__ == '__main__':
     cor.execute(v)
     f = cor.fetchall()
     for i in f:
-        if i[1].istitle():
+        if i[1][0].isupper():
             print(i)
