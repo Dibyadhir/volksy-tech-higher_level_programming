@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""module is documented"""
-import sys
+""" module is documented """
 import MySQLdb
+import sys
 
 
 if __name__ = "__main__":
