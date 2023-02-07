@@ -9,6 +9,6 @@ if __name__ == "__main__":
     cur = con.cursor()
     q = 'select * from states order by id'
     cur.execute(q)
-    a = cur.fetcthall()
+    a = cur.fetchall()
     for i in a:
         print(i)
