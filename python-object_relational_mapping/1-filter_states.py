@@ -5,7 +5,7 @@ import MySQLdb
 
 
 if __name__ == '__main__':
-    conn = MySQLdb(sys.argv[1], sys.argv[2], db=sys.argv[3])
+    conn = MySQLdb.connect(sys.argv[1], sys.argv[2], db=sys.argv[3])
     cor = conn.cursor()
     v = 'select * from states where name like "N%" order by id'
     cor.execute(v)
