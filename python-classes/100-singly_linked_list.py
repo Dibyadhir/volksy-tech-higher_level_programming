@@ -9,7 +9,7 @@ class Node:
         """Initialize a new Node"""
         self.data = data
         self.next_node = next_node
-    
+
     @property
     def data(self):
         """Get/set the data of the Node."""
