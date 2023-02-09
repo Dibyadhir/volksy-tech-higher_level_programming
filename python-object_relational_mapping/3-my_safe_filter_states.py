@@ -10,4 +10,5 @@ if __name__ == '__main':
     c.execute('SELECT * FROM states WHERE Name = %s ORDER BY id,[sys.argv[4]')
     f = cur.fetchall()
     for i in f:
-        print(i)
+        if i[1] == i[4]:
+            print(i)
