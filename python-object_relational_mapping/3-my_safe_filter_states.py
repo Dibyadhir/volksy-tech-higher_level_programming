@@ -4,11 +4,11 @@ import MySQLdb
 import os
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
     c = db.cursor()
-    c.execute('SELECT * FROM states WHERE Name = %s ORDER BY id,[sys.argv[4]')
-    f = cur.fetchall()
+    c.execute('SELECT * FROM states')
+    f = c.fetchall()
     for i in f:
-        if i[1] == i[4]:
+        if i[1] == sys.argv[4]:
             print(i)
