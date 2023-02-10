@@ -11,8 +11,8 @@ if __name__ == '__main__':
     cur.execute('''select cities.name from states inner join cities
             on state_id = states.id where states.name = '{}' '''.format(x))
     y = cur.fetchall()
-    for i in len(y):
+    for i in range(len(y)):
         if len(y) - 1 == i:
-            print(i[0])
+            print(y[i][0])
         else:
-            print(i[0], end=", ")
+            print(y[i][0], end=", ")
