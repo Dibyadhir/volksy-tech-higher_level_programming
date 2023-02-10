@@ -12,4 +12,5 @@ if __name__ == '__main__':
             on state_id = states.id where states.name = '{}' '''.format(x))
     y = cur.fetchall()
     for i in y:
+        i.replace('\n', ',')
         print(i)
