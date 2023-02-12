@@ -13,5 +13,5 @@ if __name__ == "__main__":
     s = session()
     data = s.query(State).order_by(State.id)
     for i in data:
-        print('{}: {}'.format(i.id, i.name))
+        print('{}: {}'.format(State.id, State.name))
     s.close()
