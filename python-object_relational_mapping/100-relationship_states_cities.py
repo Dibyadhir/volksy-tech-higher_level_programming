@@ -2,6 +2,8 @@
 """script to create city and state object"""
 
 if __name__ == "__main__":
+    """ this is documented """
+
     from sqlalchemy.engine import create_engine
     from sqlalchemy.engine.url import URL
     from sqlalchemy.orm import Session
