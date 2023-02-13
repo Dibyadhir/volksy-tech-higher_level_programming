@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" task 7 """
+"""state fetch all"""
+
 
 import sys
 from sqlalchemy import create_engine
