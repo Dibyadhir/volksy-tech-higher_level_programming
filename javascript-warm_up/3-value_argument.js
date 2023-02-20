@@ -2,6 +2,6 @@
 const a = process.argv[2];
 if (typeof a === 'undefined') {
   console.log('No argument');
-}else {
+} else {
   console.log(a);
 }
