@@ -9,6 +9,6 @@ if (x.length in [0, 1]) {
     // console.log(i,typeof i)
     x[i] = Number.parseInt(x[i]);
   }
+  x.sort(function (a, b) { return b - a; });
+  console.log(x[1]);
 }
-x.sort(function (a, b) { return b - a; });
-console.log(x[1]);
