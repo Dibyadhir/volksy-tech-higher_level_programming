@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-""" this is documented """
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
