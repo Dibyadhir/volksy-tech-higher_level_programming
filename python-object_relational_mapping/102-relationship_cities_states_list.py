@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" documented """
+""" Task 17 """
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -13,5 +13,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for city in session.query(City).order_by(City.id):
-        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+    for s, c in session.query(State, City).filter(State.id == City.state_id).\
+            order_by(City.id).all():
+        print("{}: {} -> {}".format(c.id, c.name, s.name))
