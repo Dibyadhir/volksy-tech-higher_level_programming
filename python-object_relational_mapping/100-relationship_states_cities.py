@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-""" this is documented """
-
-
+"""Task 15"""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
